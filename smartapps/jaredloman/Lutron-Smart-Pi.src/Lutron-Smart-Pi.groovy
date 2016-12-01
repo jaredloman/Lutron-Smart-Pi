@@ -17,10 +17,10 @@ import groovy.json.JsonSlurper
 
 definition(
 		name: "Lutron Caseta Service Manager",
-		namespace: "smartthings",
+		namespace: "jaredloman",
 		author: "Nate Schwartz",
 		description: "This smartapp is used in conjunction with server code to provide an interface to a Lutron SmartBridge",
-		category: "SmartThings Labs",
+		category: "My Apps",
 		iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
 		iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
 		iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png")
