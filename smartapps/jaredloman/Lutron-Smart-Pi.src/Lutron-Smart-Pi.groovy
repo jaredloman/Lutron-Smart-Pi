@@ -11,7 +11,6 @@
  *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
- *
  */
 import groovy.json.JsonSlurper
 
@@ -152,7 +151,7 @@ private discoverLutronDevices() {
     	ip = it.value.ip
         port = it.value.port
     }
-
+   
 	sendHubCommand(new physicalgraph.device.HubAction([
 		method: "GET",
 		path: "/status",
@@ -163,12 +162,13 @@ private discoverLutronDevices() {
 
 //Handle device list request response from raspberry pi
 def lutronHandler(physicalgraph.device.HubResponse hubResponse) {
-    def body = hubResponse.body
+    def body = hubResponse.json
+    log.debug body
     def switches = getSwitches()
     log.debug "Adding switches to state!"
-    def slurper = new JsonSlurper()
-    def result = slurper.parseText(body)
-    def deviceList = result['Body']['Devices']
+    //def slurper = new JsonSlurper()
+    //def result = slurper.parseText(body)
+    def deviceList = body['Body']['Devices']
     
     deviceList.each { k ->
             def zone
